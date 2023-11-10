@@ -2,6 +2,7 @@ package pack;
 
 public class MySinglyLinkedList<T extends Comparable<T>> implements List<T>{
 
+	// linked list parameters
 	MyNode<T> head;
 	MyNode<T> tail;
 	int size;
@@ -16,13 +17,14 @@ public class MySinglyLinkedList<T extends Comparable<T>> implements List<T>{
 	@Override
 	public void append(T item) {
 		MyNode<T> newNode = new MyNode<>(item);
-		
+		// We create a new node and if the first spot in the linked list is empty it goes there
 		if(head == null)
 		{
 			head = newNode;
 			return;
 		}
 		  MyNode<T> current = head;
+		// We find the spot in the back where it is empty and put the new node there
 	        while (current.NextNode != null) {
 	            current = current.NextNode;
 	        }
@@ -42,6 +44,7 @@ public class MySinglyLinkedList<T extends Comparable<T>> implements List<T>{
 		  MyNode<T> newNode = new MyNode<>(newItem);
 	        MyNode<T> current = head;
 
+		// We run through until we find the desired node that our new node will be behind
 	        while (current != null) {
 	            if (current.Data.equals(previous)) {
 	                newNode.NextNode = current.NextNode;
@@ -59,11 +62,13 @@ public class MySinglyLinkedList<T extends Comparable<T>> implements List<T>{
 	            return;
 	        }
 
+		// If the head is the item we want to remove, the node behidn head becoems the new head
 	        if (head.Data.equals(item)) {
 	            head = head.NextNode;
 	            return;
 	        }
 
+		
 	        MyNode<T> current = head;
 	        while (current.NextNode != null) {
 	            if (current.NextNode.Data.equals(item)) {
