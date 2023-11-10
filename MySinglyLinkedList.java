@@ -68,7 +68,7 @@ public class MySinglyLinkedList<T extends Comparable<T>> implements List<T>{
 	            return;
 	        }
 
-		
+		// Once the node is found the has a value equal to our input value, it is removed from the list
 	        MyNode<T> current = head;
 	        while (current.NextNode != null) {
 	            if (current.NextNode.Data.equals(item)) {
@@ -84,6 +84,7 @@ public class MySinglyLinkedList<T extends Comparable<T>> implements List<T>{
 	public boolean search(T item) {
 		 MyNode<T> current = head;
 
+		// We run through the list until we find a value equal to our input, or the list does not have this value.
 	        while (current != null) {
 	            if (current.Data.equals(item)) {
 	                return true;
@@ -97,6 +98,7 @@ public class MySinglyLinkedList<T extends Comparable<T>> implements List<T>{
 	public void print() {
 		MyNode<T> current = head;
 
+		// We run through every spot in the linked list and print each spot.
         while (current != null) {
             System.out.print(current.Data + " ");
             current = current.NextNode;
@@ -109,6 +111,7 @@ public class MySinglyLinkedList<T extends Comparable<T>> implements List<T>{
 	public void printReverse() {
 		 printReverse(head);
 	     System.out.println();
+		// Calls to other printreverese funciton which finds back of list and prints back from there.
 		
 	}
 	
@@ -123,11 +126,12 @@ public class MySinglyLinkedList<T extends Comparable<T>> implements List<T>{
 
 	@Override
 	public void sort() {
+		// I used an isertion sort algorithm. 
 		if (size <= 1) {
             return; // No need to sort if the list is empty or has only one element
         }
 
-        MyNode<T> sorted = null; // Initialize sorted linked list
+        MyNode<T> sorted = null; 
 
         MyNode<T> current = head;
         while (current != null) {
@@ -147,6 +151,7 @@ public class MySinglyLinkedList<T extends Comparable<T>> implements List<T>{
 	            newNode.NextNode = sorted;
 	            return newNode;
 	        } else {
+			 // We find the spot in the list where the current node should be placed in our sorted list.
 	            MyNode<T> current = sorted;
 	            while (current.NextNode != null && current.NextNode.Data.compareTo(newNode.Data) < 0) {
 	                current = current.NextNode;
@@ -160,6 +165,7 @@ public class MySinglyLinkedList<T extends Comparable<T>> implements List<T>{
 
 	@Override
 	public boolean isEmpty() {
+		// Checks if there is no value at the head of a list, aka the list is empty
 		 if (head == null)
 	        {
 	        return true;
@@ -172,7 +178,7 @@ public class MySinglyLinkedList<T extends Comparable<T>> implements List<T>{
 	public int getLength() {
 		int length = 0;
         MyNode<T> current = head;
-
+// Runs through the list and counts how many values we have
         while (current != null) {
             length++;
             current = current.NextNode;
